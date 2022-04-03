@@ -1,6 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import Layout from '../components/layout'
 import axios from 'axios'
+import PokemonList from '../components/pokemonList';
+
+
+
+
+
 
 function PokemonPage () {
 const [pokemon, setPokemon] = useState({});
@@ -43,22 +49,33 @@ const encounter3 = () => {
 
   return (
     <div>
+
+  
     <Layout pageTitle="Pokemon!">
 
     <h2>Who is that pokemon!</h2>
-    <h4>Created using pokeAPI</h4>
-      <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151" + ".png"} className="sprite" />
+    <h4>Created using pokeAPI, and bootstrap</h4>
+    
+    <div className = "row">
+      <div className = "col">
+     
+      </div>
+    </div>
+    
+  
+    
+     {/*  <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151" + ".png"} className="sprite" />
       <h3 className="pokemon-name">{pokemon.name}</h3>
   
       <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1" + ".png"} className="sprite" />
       <h3 className="pokemon-name">{pokemon2.name}</h3>
 
       <img src={"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5" + ".png"} className="sprite" />
-      <h3 className="pokemon-name">{pokemon3.name}</h3>
+      <h3 className="pokemon-name">{pokemon3.name}</h3> */}
       
     </Layout>
-
-      
+    <PokemonList></PokemonList>
+    
     </div>
    
   )

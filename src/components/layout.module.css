@@ -24,3 +24,6 @@
     font-weight: 700;
     margin: 3rem 0;
   }
+  .card-light-blue {
+    background-color: rgb(147, 241, 248);
+  }
