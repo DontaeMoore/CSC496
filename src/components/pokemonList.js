@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import PokemonCard from './pokemonCard'
 import axios from 'axios';
 
-export default class PokemonList extends Component {
+
+export default class PokemonList extends Component  {
+  
 state= {
   url: "https://pokeapi.co/api/v2/pokemon/?limit=151",
   pokemon: null,
@@ -21,10 +23,10 @@ this.setState({ pokemon: res.data['results']});
   render() {
     return (
       <div>
-        {console.log("state in pokemonList", this.state.searchString)}
+        {console.log("state in pokemonList", this.props.searchString)}
       {this.state.pokemon ? (
       <div className = "row">
-      {this.state.pokemon.map(pokemon =>  pokemon.name.includes(this.state.searchString) && (
+      {this.state.pokemon.map(pokemon =>  pokemon.name.includes(this.props.searchString) && (
      <PokemonCard
      key = {pokemon.name}
      name = {pokemon.name}

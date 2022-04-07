@@ -49,7 +49,7 @@ useEffect(() => {
         >
         </input>
 
-    <PokemonList searchString = {getSearch}></PokemonList>
+    <PokemonList searchString = {search} onChange= {handleSearchChange}></PokemonList>
     </div>
 
    
