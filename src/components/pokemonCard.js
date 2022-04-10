@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Rechartspie from '../components/rechartspie';
 
 import styled from 'styled-components'
 
@@ -39,13 +40,25 @@ componentDidMount(){
          {this.state.pokemonIndex}:
          </div>
            <h3>{this.state.name}</h3>
-           <img src = {this.state.imageUrl}></img>
+           <div class="container">
+          <div class="row ">
+          <div class="col-md-6"><img src = {this.state.imageUrl}></img></div>
+          <div class="col-md-6"><span class="pull-right mx-auto"><Rechartspie></Rechartspie></span></div>
+          </div>
+          </div>
+           
            
          </div>
-         
-         
-       </div>
+         <div class="card-body">
+          <h5 class="card-title">Special title treatment</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   
+          </div>
+        
+
+  
+       </div>
+       
       </div>
     )
   }
