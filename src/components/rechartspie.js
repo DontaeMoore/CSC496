@@ -11,27 +11,68 @@ import {
     Bar,
   } from "recharts";
 
-const data = [
-    { name: "Attack", users: 200,  fill: 'red' },
-    { name: "Defense", users: 150, fill: 'blue'},
-    { name: "Health", users: 1000, fill: 'green'}
-   
-  ];
 
+  
+  
+  
 
-
-
+  
 
 export default class rechartspie extends Component {
-  render() {
-    return (
-      <div>
 
-        <PieChart width={200} height={150}>
+  
+
+  state = {
+    data: null
+
+  };
+
+  
+
+  async componentDidMount(){
+ 
+    const health = this.props.HP;
+    const attack = this.props.ATTACK;
+    const defend = this.props.DEFENSE;
+    console.log("Current state values " + health + " " + attack + " " + defend)
+    
+    
+
+    this.setState({
+    
+      data: [
+        { name: "Attack", users: attack,  fill: 'red' },
+        { name: "Defense", users: defend, fill: 'blue'},
+        { name: "Health", users: health, fill: 'green'}
+        
+      ]
+     
+     })
+
+     
+    
+     
+
+      
+     
+  }
+
+
+
+  render() {
+    this.setState();
+    
+
+    return (
+      
+      <div>
+       
+
+        <PieChart width={200} height={200}>
           <Pie
             dataKey="users"
             isAnimationActive={false}
-            data={data}
+            data={this.state.data}
             cx={100}
             cy={100}
             outerRadius={40}

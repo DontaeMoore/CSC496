@@ -12,7 +12,7 @@ state = {
   name: '',
   imageUrl: '',
   pokemonIndex: '',
-  pokemonUrl: 'https://pokeapi.co/api/v2/pokemon/5/',
+  pokemonUrl: 'https://pokeapi.co/api/v2/pokemon/',
   pokestats: null,
   HP: 0,
   ATTACK: 0,
@@ -22,11 +22,12 @@ state = {
 };
 
 async componentDidMount(){
+  
   const name = this.props.name; 
   const url = this.props.url; 
-  const PokeData = await axios.get(this.state.pokemonUrl);
-  this.setState({ pokestats: PokeData.data['stats']});
-  console.log(this.state.pokestats);
+  const pokemonIndex = url.split("/")[url.split("/").length - 2];
+  const PokeData = await axios.get(this.state.pokemonUrl + pokemonIndex);
+  
 
   PokeData.data.stats.map(stat => {
    switch (stat.stat.name){
@@ -41,11 +42,12 @@ async componentDidMount(){
       break;
    }
  })
-
+ 
+ 
  console.log(this.state.HP, this.state.ATTACK, this.state.DEFENSE)
 
   
-  const pokemonIndex = url.split("/")[url.split("/").length - 2];
+  
   const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`
 
   this.setState({
@@ -60,7 +62,7 @@ async componentDidMount(){
 
 
 
-  render() {
+ render() {
    
 
     return (
@@ -72,10 +74,32 @@ async componentDidMount(){
          {this.state.pokemonIndex}:
          </div>
            <h3>{this.state.name}</h3>
+           
            <div class="container">
           <div class="row ">
           <div class="col-md-6"><img src = {this.state.imageUrl}></img></div>
-          <div class="col-md-6"><span class="pull-right mx-auto"><Rechartspie></Rechartspie></span></div>
+          <div class="col-md-6"><span class="pull-right mx-auto">
+            
+            
+          {this.state.imageUrl ? (
+      <div className = "row">
+      {
+     <Rechartspie 
+     HP = {this.state.HP}
+     ATTACK = {this.state.ATTACK}
+     DEFENSE = {this.state.DEFENSE}/>
+      }
+      </div>
+      ) : (<h1>Loading Graph {console.log("Loading Graph")}</h1>
+      
+      )
+      }
+            
+            
+            
+     
+            
+            </span></div>
           </div>
           </div>
            

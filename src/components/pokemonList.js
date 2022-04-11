@@ -19,7 +19,6 @@ this.setState({ pokemon: res.data['results']});
 
 
 
-
   render() {
     return (
       <div>
