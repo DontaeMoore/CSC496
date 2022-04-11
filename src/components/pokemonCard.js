@@ -2,18 +2,49 @@ import React, { Component } from 'react'
 import Rechartspie from '../components/rechartspie';
 
 import styled from 'styled-components'
+import axios from 'axios';
+
+
+
 
 export default class PokemonCard extends Component {
 state = {
   name: '',
   imageUrl: '',
-  pokemonIndex: ''
+  pokemonIndex: '',
+  pokemonUrl: 'https://pokeapi.co/api/v2/pokemon/5/',
+  pokestats: null,
+  HP: 0,
+  ATTACK: 0,
+  DEFENSE: 0,
+  type: ''
+  
 };
 
-componentDidMount(){
+async componentDidMount(){
   const name = this.props.name; 
   const url = this.props.url; 
+  const PokeData = await axios.get(this.state.pokemonUrl);
+  this.setState({ pokestats: PokeData.data['stats']});
+  console.log(this.state.pokestats);
 
+  PokeData.data.stats.map(stat => {
+   switch (stat.stat.name){
+     case 'hp':
+      this.setState({ HP: stat['base_stat']});
+      break;
+      case 'attack':
+      this.setState({ ATTACK: stat['base_stat']});
+      break;
+      case 'defense':
+      this.setState({ DEFENSE: stat['base_stat']});
+      break;
+   }
+ })
+
+ console.log(this.state.HP, this.state.ATTACK, this.state.DEFENSE)
+
+  
   const pokemonIndex = url.split("/")[url.split("/").length - 2];
   const imageUrl = `https://github.com/PokeAPI/sprites/blob/master/sprites/pokemon/${pokemonIndex}.png?raw=true`
 
@@ -23,6 +54,7 @@ componentDidMount(){
     pokemonIndex: pokemonIndex
    })
 }
+
 
 
 
@@ -49,11 +81,12 @@ componentDidMount(){
            
            
          </div>
-         <div class="card-body">
+         
+        {/* <div class="card-body">
           <h5 class="card-title">Special title treatment</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
   
-          </div>
+          </div> */}
         
 
   
