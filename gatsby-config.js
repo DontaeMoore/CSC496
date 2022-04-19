@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/CSC496",
     siteMetadata: {
       title: `CSC 496 Project`,
         siteUrl: `https://www.yourdomain.tld`,
