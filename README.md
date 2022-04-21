@@ -5,4 +5,10 @@ Added Nice looking pokemon Cards!
 Used React State to load all Pokemon DATA
 Formatted Cards with bootstrap
 
-Pokemon Search function to be implemented very soon!
+Pokemon Search Implemented
+
+View the Site Here!
+
+https://dontaemoore.github.io/CSC496/
+
+
